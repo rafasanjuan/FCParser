@@ -1,0 +1,95 @@
+{
+  "name": "@themesberg/volt-react-dashboard",
+  "description": "Volt React Dashboard is a free and open source admin dashboard template powered by React.js and Bootstrap 5",
+  "author": "Themesberg",
+  "keywords": [
+    "bootstrap 5",
+    "react",
+    "react dashboard",
+    "react admin template",
+    "free react",
+    "react ui library",
+    "react bootstrap 5",
+    "bootstrap 5 dashboard",
+    "themesberg"
+  ],
+  "license": "MIT",
+  "homepage": "https://demo.themesberg.com/volt-react-dashboard",
+  "bugs": {
+    "url": "https://github.com/themesberg/volt-react-dashboard/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/themesberg/volt-react-dashboard"
+  },
+  "version": "1.0.0",
+  "dependencies": {
+    "@elastic/charts": "^44.0.0",
+    "@elastic/datemath": "^5.0.3",
+    "@elastic/eui": "^45.0.0",
+    "@emotion/react": "^11.7.1",
+    "@fortawesome/fontawesome-free": "^5.15.1",
+    "@fortawesome/fontawesome-svg-core": "^1.2.30",
+    "@fortawesome/free-brands-svg-icons": "^5.14.0",
+    "@fortawesome/free-regular-svg-icons": "^5.14.0",
+    "@fortawesome/free-solid-svg-icons": "^5.14.0",
+    "@fortawesome/react-fontawesome": "^0.1.11",
+    "@monaco-editor/react": "^4.4.5",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "@themesberg/react-bootstrap": "^1.4.1",
+    "axios": "^0.25.0",
+    "bootstrap": "5.0.0-beta1",
+    "chart.js": "^3.7.1",
+    "chartist": "^0.11.4",
+    "chartist-plugin-tooltips-updated": "^0.1.4",
+    "faker": "^6.6.6",
+    "js-yaml": "^4.1.0",
+    "moment": "^2.29.1",
+    "moment-timezone": "^0.5.31",
+    "monaco-editor": "^0.33.0",
+    "node": "16.13.2",
+    "prop-types": "^15.8.1",
+    "react": "^16.13.1",
+    "react-chartist": "^0.14.3",
+    "react-chartjs-2": "^4.0.1",
+    "react-copy-to-clipboard": "^5.0.3",
+    "react-datetime": "^3.0.4",
+    "react-dom": "^16.13.1",
+    "react-github-btn": "^1.2.0",
+    "react-live": "^2.2.3",
+    "react-router-dom": "^5.2.0",
+    "react-router-hash-link": "^2.3.1",
+    "react-scripts": "3.4.3",
+    "react-transition-group": "^4.4.1",
+    "simplebar-react": "^2.3.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "build-local": "PUBLIC_URL=./ react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "sass": "^1.48.0"
+  }
+}
