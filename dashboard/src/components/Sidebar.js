@@ -7,6 +7,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBook, faBoxOpen, faChartPie, faCog, faFileAlt, faHandHoldingUsd, faSignOutAlt, faTable, faTimes, faCalendarAlt, faMapPin, faInbox, faRocket } from "@fortawesome/free-solid-svg-icons";
 import { Nav, Badge, Image, Button, Dropdown, Accordion, Navbar } from '@themesberg/react-bootstrap';
 import { Link } from 'react-router-dom';
+import { EuiTimeline, EuiTimelineItem, EuiIcon, EuiToken, EuiTimelineProps, EuiText, EuiSpacer} from '@elastic/eui';
+import { css } from '@emotion/react';
 
 import { Routes } from "../routes";
 import ThemesbergLogo from "../assets/img/themesberg.svg";
@@ -67,6 +69,40 @@ export default (props = {}) => {
     );
   };
 
+  const fcparserSteps = [
+    {
+      icon: 'visualizeApp',
+      iconAriaLabel: 'Variable analysis',
+      children: (
+        <EuiText size="s">
+          <p>
+            Variable analysis
+          </p>
+        </EuiText>
+      ),
+    },
+    {
+      icon: 'lensApp',
+      iconAriaLabel: 'Feature Generator',
+      children: (
+        <EuiText size="s">
+          <p>
+            Feature Generator
+          </p>
+        </EuiText>
+      ),
+    },
+    {
+      icon: 'saveObjectsApp',
+      iconAriaLabel: 'Launch FC Parser',
+      children: (
+        <EuiText size="s">
+          <p>Launch FC Parser</p>
+        </EuiText>
+      ),
+    },
+  ];  
+
   return (
     <>
       <Navbar expand={false} collapseOnSelect variant="dark" className="navbar-theme-primary px-4 d-md-none">
@@ -97,65 +133,56 @@ export default (props = {}) => {
               </Nav.Link>
             </div>
             <Nav className="flex-column pt-3 pt-md-0">
-              <NavItem title="FC Parser" link={Routes.Presentation.path} image={ReactHero} />
+              <NavItem title="Easy-FaaC" link={Routes.Presentation.path} image={ReactHero} />
+              <EuiSpacer/>
+              {/* <EuiTimeline items={fcparserSteps} aria-label="Guide timeline" /> */}
+              {/* <EuiTimeline aria-label="Guide timeline">
+                <EuiTimelineItem
+                  icon={
+                    <EuiIcon
+                      type="visualizeApp"
+                      color="black"
+                    />
+                  }
+                >
+                  <EuiText size="s"> <p> Variable analysis </p> </EuiText>
+                </EuiTimelineItem>
+                <EuiTimelineItem
+                  icon={
+                    <EuiIcon
+                      type="visualizeApp"
+                      color="black"
+                    />
+                  }
+                >
+                  <EuiText size="s"> <p> Variable analysis </p> </EuiText>
+                </EuiTimelineItem>
+                <EuiTimelineItem
+                  icon={
+                    <EuiIcon
+                      type="visualizeApp"
+                      color="black"
+                    />
+                  }
+                >
+                  <EuiText size="s"> <p> Variable analysis </p> </EuiText>
+                </EuiTimelineItem>
+                </EuiTimeline> */}
 
-              <NavItem title="Overview" link={Routes.DashboardOverview.path} icon={faChartPie} />
-              <NavItem title="Hello world" link={Routes.DashboardOverview.path} icon={faChartPie} />
-              <NavItem external title="Messages" link="https://demo.themesberg.com/volt-pro-react/#/messages" target="_blank" badgeText="Pro" icon={faInbox} />
-              <NavItem title="Transactions" icon={faHandHoldingUsd} link={Routes.Transactions.path} />
-              <NavItem title="Settings" icon={faCog} link={Routes.Settings.path} />
-              <NavItem external title="Calendar" link="https://demo.themesberg.com/volt-pro-react/#/calendar" target="_blank" badgeText="Pro" icon={faCalendarAlt} />
-              <NavItem external title="Map" link="https://demo.themesberg.com/volt-pro-react/#/map" target="_blank" badgeText="Pro" icon={faMapPin} />
-
-              <CollapsableNavItem eventKey="tables/" title="Tables" icon={faTable}>
-                <NavItem title="Bootstrap Table" link={Routes.BootstrapTables.path} />
-              </CollapsableNavItem>
-
-              <CollapsableNavItem eventKey="examples/" title="Page Examples" icon={faFileAlt}>
-                <NavItem title="Sign In" link={Routes.Signin.path} />
-                <NavItem title="Sign Up" link={Routes.Signup.path} />
-                <NavItem title="Forgot password" link={Routes.ForgotPassword.path} />
-                <NavItem title="Reset password" link={Routes.ResetPassword.path} />
-                <NavItem title="Lock" link={Routes.Lock.path} />
-                <NavItem title="404 Not Found" link={Routes.NotFound.path} />
-                <NavItem title="500 Server Error" link={Routes.ServerError.path} />
-              </CollapsableNavItem>
-
-              <NavItem external title="Plugins" link="https://demo.themesberg.com/volt-pro-react/#/plugins/datatable" target="_blank" badgeText="Pro" icon={faChartPie} />
-
-              <Dropdown.Divider className="my-3 border-indigo" />
-
-              <CollapsableNavItem eventKey="documentation/" title="Getting Started" icon={faBook}>
-                <NavItem title="Hello World" link={Routes.DocsOverview.path} />
-                <NavItem title="Overview" link={Routes.DocsOverview.path} />
-                <NavItem title="Download" link={Routes.DocsDownload.path} />
-                <NavItem title="Quick Start" link={Routes.DocsQuickStart.path} />
-                <NavItem title="License" link={Routes.DocsLicense.path} />
-                <NavItem title="Folder Structure" link={Routes.DocsFolderStructure.path} />
-                <NavItem title="Build Tools" link={Routes.DocsBuild.path} />
-                <NavItem title="Changelog" link={Routes.DocsChangelog.path} />
-              </CollapsableNavItem>
-              <CollapsableNavItem eventKey="components/" title="Components" icon={faBoxOpen}>
-                <NavItem title="Accordion" link={Routes.Accordions.path} />
-                <NavItem title="Alerts" link={Routes.Alerts.path} />
-                <NavItem title="Badges" link={Routes.Badges.path} />
-                <NavItem external title="Widgets" link="https://demo.themesberg.com/volt-pro-react/#/components/widgets" target="_blank" badgeText="Pro" />
-                <NavItem title="Breadcrumbs" link={Routes.Breadcrumbs.path} />
-                <NavItem title="Buttons" link={Routes.Buttons.path} />
-                <NavItem title="Forms" link={Routes.Forms.path} />
-                <NavItem title="Modals" link={Routes.Modals.path} />
-                <NavItem title="Navbars" link={Routes.Navbars.path} />
-                <NavItem title="Navs" link={Routes.Navs.path} />
-                <NavItem title="Pagination" link={Routes.Pagination.path} />
-                <NavItem title="Popovers" link={Routes.Popovers.path} />
-                <NavItem title="Progress" link={Routes.Progress.path} />
-                <NavItem title="Tables" link={Routes.Tables.path} />
-                <NavItem title="Tabs" link={Routes.Tabs.path} />
-                <NavItem title="Toasts" link={Routes.Toasts.path} />
-                <NavItem title="Tooltips" link={Routes.Tooltips.path} />
-              </CollapsableNavItem>
-              <NavItem external title="Themesberg" link="https://themesberg.com" target="_blank" image={ThemesbergLogo} />
-              <Button as={Link} to={Routes.Upgrade.path} variant="secondary" className="upgrade-to-pro"><FontAwesomeIcon icon={faRocket} className="me-1" /> Upgrade to Pro</Button>
+              <EuiTimeline aria-label="Timeline item example">
+                <EuiTimelineItem icon={ <EuiToken iconType="share" size="l" shape="circle"/>} iconAriaLabel="Main icon">
+                  <EuiText size="s"> <p> Upload dataset </p> </EuiText>
+                </EuiTimelineItem>
+                <EuiTimelineItem icon={ <EuiToken iconType="visualizeApp" size="l" shape="circle"/>} iconAriaLabel="Main icon">
+                  <EuiText size="s"> <p> Variable analysis </p> </EuiText>
+                </EuiTimelineItem>
+                <EuiTimelineItem icon={ <EuiToken iconType="lensApp" size="l" shape="circle"/>} iconAriaLabel="Main icon">
+                  <EuiText size="s"> <p> Feature Generator </p> </EuiText>
+                </EuiTimelineItem>
+                <EuiTimelineItem icon={ <EuiToken iconType="savedObjectsApp" size="l" shape="circle"/>} iconAriaLabel="Main icon">
+                  <EuiText size="s"> <p> Launch FCParser </p> </EuiText>
+                </EuiTimelineItem>
+              </EuiTimeline>
             </Nav>
           </div>
         </SimpleBar>

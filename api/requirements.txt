@@ -1,6 +1,10 @@
+IPy 
+PyYAML
 flask
 flask_cors
-io
 pandas
 pandas_profiling
 simplejson
+aioflask
+asgiref
+pyyaml

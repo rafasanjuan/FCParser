@@ -50,7 +50,7 @@ export default (props) => {
     <Navbar variant="dark" expanded className="ps-0 pe-2 pb-0">
       <Container fluid className="px-0">
         <div className="d-flex justify-content-between w-100">
-          <div className="d-flex align-items-center">
+          {/* <div className="d-flex align-items-center">
             <Form className="navbar-search">
               <Form.Group id="topbarSearch">
                 <InputGroup className="input-group-merge search-bar">
@@ -113,7 +113,7 @@ export default (props) => {
                 </Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
-          </Nav>
+          </Nav> */}
         </div>
       </Container>
     </Navbar>

@@ -1,0 +1,467 @@
+{
+	"info": {
+		"_postman_id": "515e2568-3b00-40b9-8f46-87066cd19e2b",
+		"name": "API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Upload log",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"pm.collectionVariables.set(\"session_id\", jsonData.session_id);",
+							"postman.setEnvironmentVariable(\"session_id\", jsonData.session_id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "files[]",
+							"type": "file",
+							"src": "nf-with-headers.csv"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/upload",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"upload"
+					],
+					"query": [
+						{
+							"key": "files[]",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register counter",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "session_id",
+							"value": "{{session_id}}",
+							"type": "default"
+						},
+						{
+							"key": "variable",
+							"value": "protocol",
+							"type": "default"
+						},
+						{
+							"key": "name",
+							"value": "protocol_tcp",
+							"type": "default"
+						},
+						{
+							"key": "matchtype",
+							"value": "single",
+							"type": "default"
+						},
+						{
+							"key": "value",
+							"value": "TCP",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/feature",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"feature"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List counters",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/features/{{session_id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"features",
+						"{{session_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete counter",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "session_id",
+							"value": "test",
+							"type": "default"
+						},
+						{
+							"key": "names",
+							"value": "protocol",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/feature",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"feature"
+					],
+					"query": [
+						{
+							"key": "session_id",
+							"value": "todo",
+							"disabled": true
+						},
+						{
+							"key": "names",
+							"value": "protocol",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register variable",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "session_id",
+							"value": "test",
+							"type": "default"
+						},
+						{
+							"key": "name",
+							"value": "protocol",
+							"type": "default"
+						},
+						{
+							"key": "matchtype",
+							"value": "string",
+							"type": "default"
+						},
+						{
+							"key": "where",
+							"value": "7",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/variable",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"variable"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List variables",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/variables/{{session_id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"variables",
+						"{{session_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete variable",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "session_id",
+							"value": "todo",
+							"type": "default"
+						},
+						{
+							"key": "names",
+							"value": "protocol",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/feature",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"feature"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Set configs",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "session_id",
+							"value": "{{session_id}}",
+							"type": "default"
+						},
+						{
+							"key": "timearg",
+							"value": "timearg",
+							"type": "default"
+						},
+						{
+							"key": "timestamp_format",
+							"value": "'%Y-%m-%d %H:%M:%S'",
+							"type": "default"
+						},
+						{
+							"key": "tag",
+							"value": "",
+							"type": "default",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/config",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"config"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Launch parser (with sessionID)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"session_id\", jsonData.session_id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "session_id",
+							"value": "{{session_id}}",
+							"type": "default"
+						},
+						{
+							"key": "config[]",
+							"value": "tag: netflow\nstructured: True\ntimestamp_format: \"%Y-%m-%d %H:%M:%S\"\ntimearg: timestamp\n\n# Variables Section\n# =================\nVARIABLES:\n\n- name: timestamp\n  matchtype: time\n  where: 0\n- name: duration\n  matchtype: number\n  where: 2\n- name: src_ip\n  matchtype: ip\n  where: 3\n- name: dst_ip\n  matchtype: ip\n  where: 4\n- name: src_port\n  matchtype: number\n  where: 5\n- name: dst_port\n  matchtype: number\n  where: 6\n- name: protocol\n  matchtype: string\n  where: 7\n- name: tcp_flags\n  matchtype: string\n  where: 8\n- name: src_tos\n  matchtype: number\n  where: 10\n- name: in_packets\n  matchtype: number\n  where: 11\n- name: in_bytes\n  matchtype: number\n  where: 12\n- name: out_packets\n  matchtype: number\n  where: 13\n- name: out_bytes\n  matchtype: number\n  where: 14\n- name: in_interface\n  matchtype: number\n  where: 15\n- name: out_interface\n  matchtype: number\n  where: 16\n\n\n# FEATURES Section\n# =================\nFEATURES:\n\n# source IP\n- name: src_ip_private\n  variable: src_ip\n  matchtype: single\n  value: private\n- name: src_ip_public\n  variable: src_ip\n  matchtype: single\n  value: public\n- name: src_ip_default\n  variable: src_ip\n  matchtype: default\n  value: \n\n# destination IP\n- name: dst_ip_private\n  variable: dst_ip\n  matchtype: single\n  value: private\n- name: dst_ip_public\n  variable: dst_ip\n  matchtype: single\n  value: public\n- name: dst_ip_default\n  variable: dst_ip\n  matchtype: default\n  value: \n\n\n# source port\n- name: sport_zero\n  variable: src_port\n  matchtype: single\n  value: 0\n- name: sport_multiplex\n  variable: src_port\n  matchtype: single\n  value: 1\n- name: sport_echo\n  variable: src_port\n  matchtype: single\n  value: 7\n- name: sport_discard\n  variable: src_port\n  matchtype: single\n  value: 9\n- name: sport_daytime\n  variable: src_port\n  matchtype: single\n  value: 13\n- name: sport_quote\n  variable: src_port\n  matchtype: single\n  value: 17\n- name: sport_chwhereen\n  variable: src_port\n  matchtype: single\n  value: 19\n- name: sport_ftp_data\n  variable: src_port\n  matchtype: single\n  value: 20\n- name: sport_ftp_control\n  variable: src_port\n  matchtype: single\n  value: 21\n- name: sport_ssh\n  variable: src_port\n  matchtype: single\n  value: 22\n- name: sport_telnet\n  variable: src_port\n  matchtype: single\n  value: 23\n- name: sport_smtp\n  variable: src_port\n  matchtype: single\n  value: 25\n- name: sport_dns\n  variable: src_port\n  matchtype: single\n  value: 53\n- name: sport_bootp\n  variable: src_port\n  matchtype: multiple\n  value:\n  - 67\n  - 68\n- name: sport_gopher\n  variable: src_port\n  matchtype: single\n  value: 70\n- name: sport_finger\n  variable: src_port\n  matchtype: single\n  value: 79\n- name: sport_http\n  variable: src_port\n  matchtype: single\n  value: 80\n- name: sport_kerberos\n  variable: src_port\n  matchtype: single\n  value: 88\n- name: sport_pop3\n  variable: src_port\n  matchtype: single\n  value: 110\n- name: sport_nntp\n  variable: src_port\n  matchtype: single\n  value: 119\n- name: sport_ntp\n  variable: src_port\n  matchtype: single\n  value: 123\n- name: sport_netbios\n  variable: src_port\n  matchtype: multiple\n  value:\n  - 137\n  - 138\n  - 139\n- name: sport_imap4\n  variable: src_port\n  matchtype: single\n  value: 143\n- name: sport_snmp\n  variable: src_port\n  matchtype: single\n  value: 161\n- name: sport_ldap\n  variable: src_port\n  matchtype: single\n  value: 389\n- name: sport_https\n  variable: src_port\n  matchtype: single\n  value: 443\n- name: sport_mds\n  variable: src_port\n  matchtype: single\n  value: 445\n- name: sport_kpasswd\n  variable: src_port\n  matchtype: single\n  value: 464\n- name: sport_smtp_ssl\n  variable: src_port\n  matchtype: single\n  value: 465\n- name: sport_syslog\n  variable: src_port\n  matchtype: single\n  value: 514\n- name: sport_smtp\n  variable: src_port\n  matchtype: single\n  value: 587\n- name: sport_ldaps\n  variable: src_port\n  matchtype: single\n  value: 636\n- name: sport_cups\n  variable: src_port\n  matchtype: single\n  value: 631\n- name: sport_imap4\n  variable: src_port\n  matchtype: single\n  value: 993\n- name: sport_socks\n  variable: src_port\n  matchtype: single\n  value: 1080\n- name: sport_openvpn\n  variable: src_port\n  matchtype: single\n  value: 1194\n- name: sport_mssql\n  variable: src_port\n  matchtype: multiple\n  value:\n  - 1433\n  - 1434\n- name: sport_citrix\n  variable: src_port\n  matchtype: single\n  value: 1494\n- name: sport_oracle\n  variable: src_port\n  matchtype: single\n  value: 1521\n- name: sport_rapservice\n  variable: src_port\n  matchtype: single\n  value: 1530\n- name: sport_msnmessenger\n  variable: src_port\n  matchtype: single\n  value: 1863\n- name: sport_mgc\n  variable: src_port\n  matchtype: single\n  value: 3268\n- name: sport_mysql\n  variable: src_port\n  matchtype: single\n  value: 3306\n- name: sport_metasploit\n  variable: src_port\n  matchtype: single\n  value: 4444\n- name: sport_emule\n  variable: src_port\n  matchtype: single\n  value: 4662\n- name: sport_xmpp\n  variable: src_port\n  matchtype: single\n  value: 5222\n- name: sport_bittorrent\n  variable: src_port\n  matchtype: single\n  value: 6881\n- name: sport_http2\n  variable: src_port\n  matchtype: single\n  value: 8080\n- name: sport_reserved\n  variable: src_port\n  matchtype: range\n  value:\n  - 0\n  - 1023\n- name: sport_register\n  variable: src_port\n  matchtype: range\n  value:\n  - 1024\n  - 49151\n- name: sport_private\n  variable: src_port\n  matchtype: range\n  value:\n  - 49152\n  - 65535\n\n\n# destination port\n- name: dport_zero\n  variable: dst_port\n  matchtype: single\n  value: 0\n- name: dport_multiplex\n  variable: dst_port\n  matchtype: single\n  value: 1\n- name: dport_echo\n  variable: dst_port\n  matchtype: single\n  value: 7\n- name: dport_discard\n  variable: dst_port\n  matchtype: single\n  value: 9\n- name: dport_daytime\n  variable: dst_port\n  matchtype: single\n  value: 13\n- name: dport_quote\n  variable: dst_port\n  matchtype: single\n  value: 17\n- name: dport_chwhereen\n  variable: dst_port\n  matchtype: single\n  value: 19\n- name: dport_ftp_data\n  variable: dst_port\n  matchtype: single\n  value: 20\n- name: dport_ftp_control\n  variable: dst_port\n  matchtype: single\n  value: 21\n- name: dport_ssh\n  variable: dst_port\n  matchtype: single\n  value: 22\n- name: dport_telnet\n  variable: dst_port\n  matchtype: single\n  value: 23\n- name: dport_smtp\n  variable: dst_port\n  matchtype: single\n  value: 25\n- name: dport_dns\n  variable: dst_port\n  matchtype: single\n  value: 53\n- name: dport_bootp\n  variable: dst_port\n  matchtype: multiple\n  value:\n  - 67\n  - 68\n- name: dport_gopher\n  variable: dst_port\n  matchtype: single\n  value: 70\n- name: dport_finger\n  variable: dst_port\n  matchtype: single\n  value: 79\n- name: dport_http\n  variable: dst_port\n  matchtype: single\n  value: 80\n- name: dport_kerberos\n  variable: dst_port\n  matchtype: single\n  value: 88\n- name: dport_pop3\n  variable: dst_port\n  matchtype: single\n  value: 110\n- name: dport_nntp\n  variable: dst_port\n  matchtype: single\n  value: 119\n- name: dport_ntp\n  variable: dst_port\n  matchtype: single\n  value: 123\n- name: dport_netbios\n  variable: dst_port\n  matchtype: multiple\n  value:\n  - 137\n  - 138\n  - 139\n- name: dport_imap4\n  variable: dst_port\n  matchtype: single\n  value: 143\n- name: dport_snmp\n  variable: dst_port\n  matchtype: single\n  value: 161\n- name: dport_ldap\n  variable: dst_port\n  matchtype: single\n  value: 389\n- name: dport_https\n  variable: dst_port\n  matchtype: single\n  value: 443\n- name: dport_mds\n  variable: dst_port\n  matchtype: single\n  value: 445\n- name: dport_kpasswd\n  variable: dst_port\n  matchtype: single\n  value: 464\n- name: dport_smtp_ssl\n  variable: dst_port\n  matchtype: single\n  value: 465\n- name: dport_syslog\n  variable: dst_port\n  matchtype: single\n  value: 514\n- name: dport_smtp\n  variable: dst_port\n  matchtype: single\n  value: 587\n- name: dport_ldaps\n  variable: dst_port\n  matchtype: single\n  value: 636\n- name: dport_cups\n  variable: dst_port\n  matchtype: single\n  value: 631\n- name: dport_imap4\n  variable: dst_port\n  matchtype: single\n  value: 993\n- name: dport_socks\n  variable: dst_port\n  matchtype: single\n  value: 1080\n- name: dport_openvpn\n  variable: dst_port\n  matchtype: single\n  value: 1194\n- name: dport_mssql\n  variable: dst_port\n  matchtype: multiple\n  value:\n  - 1433\n  - 1434\n- name: dport_citrix\n  variable: dst_port\n  matchtype: single\n  value: 1494\n- name: dport_oracle\n  variable: dst_port\n  matchtype: single\n  value: 1521\n- name: dport_rapservice\n  variable: dst_port\n  matchtype: single\n  value: 1530\n- name: dport_msnmessenger\n  variable: dst_port\n  matchtype: single\n  value: 1863\n- name: dport_mgc\n  variable: dst_port\n  matchtype: single\n  value: 3268\n- name: dport_mysql\n  variable: dst_port\n  matchtype: single\n  value: 3306\n- name: dport_metasploit\n  variable: dst_port\n  matchtype: single\n  value: 4444\n- name: dport_emule\n  variable: dst_port\n  matchtype: single\n  value: 4662\n- name: dport_xmpp\n  variable: dst_port\n  matchtype: single\n  value: 5222\n- name: dport_bittorrent\n  variable: dst_port\n  matchtype: single\n  value: 6881\n- name: dport_http2\n  variable: dst_port\n  matchtype: single\n  value: 8080\n- name: dport_reserved\n  variable: dst_port\n  matchtype: range\n  value:\n  - 0\n  - 1023\n- name: dport_register\n  variable: dst_port\n  matchtype: range\n  value:\n  - 1024\n  - 49151\n- name: dport_private\n  variable: dst_port\n  matchtype: range\n  value:\n  - 49152\n  - 65535\n\n\n# protocol\n- name: protocol_tcp\n  variable: protocol\n  matchtype: single\n  value: TCP\n- name: protocol_udp\n  variable: protocol\n  matchtype: single\n  value: UDP\n- name: protocol_icmp\n  variable: protocol\n  matchtype: single\n  value: ICMP\n- name: protocol_igmp\n  variable: protocol\n  matchtype: single\n  value: IGMP\n- name: protocol_other\n  variable: protocol\n  matchtype: default\n  value: \n\n\n# TCP flags\n- name: tcpflags_URG\n  variable: tcp_flags\n  matchtype: regexp\n  value: 'U'\n- name: tcpflags_ACK\n  variable: tcp_flags\n  matchtype: regexp\n  value: 'A'\n- name: tcpflags_PSH\n  variable: tcp_flags\n  matchtype: regexp\n  value: 'P'\n- name: tcpflags_RST\n  variable: tcp_flags\n  matchtype: regexp\n  value: 'R'\n- name: tcpflags_SYN\n  variable: tcp_flags\n  matchtype: regexp\n  value: 'S'\n- name: tcpflags_FIN\n  variable: tcp_flags\n  matchtype: regexp\n  value: 'F'\n\n\n# source Type of Service\n- name: srctos_zero\n  variable: src_tos\n  matchtype: single\n  value: 0\n- name: srctos_192\n  variable: src_tos\n  matchtype: single\n  value: 192\n- name: srctos_other\n  variable: src_tos\n  matchtype: default\n  value: \n\n\n# Input packets\n- name: in_npackets_verylow\n  variable: in_packets\n  matchtype: range\n  value:\n  - 0\n  - 3\n- name: in_npackets_low\n  variable: in_packets\n  matchtype: range\n  value:\n  - 4\n  - 20\n- name: in_npackets_medium\n  variable: in_packets\n  matchtype: range\n  value:\n  - 21\n  - 100\n- name: in_npackets_high\n  variable: in_packets\n  matchtype: range\n  value:\n  - 101\n  - 1000\n- name: in_npackets_veryhigh\n  variable: in_packets\n  matchtype: range\n  value:\n  - 1001\n  - Inf\n\n\n# Output packets\n- name: out_npackets_verylow\n  variable: out_packets\n  matchtype: range\n  value:\n  - 0\n  - 3\n- name: out_npackets_low\n  variable: out_packets\n  matchtype: range\n  value:\n  - 4\n  - 20\n- name: out_npackets_medium\n  variable: out_packets\n  matchtype: range\n  value:\n  - 21\n  - 100\n- name: out_npackets_high\n  variable: out_packets\n  matchtype: range\n  value:\n  - 101\n  - 1000\n- name: out_npackets_veryhigh\n  variable: out_packets\n  matchtype: range\n  value:\n  - 1001\n  - Inf\n\n\n# Input Bytes\n- name: in_nbytes_verylow\n  variable: in_bytes\n  matchtype: range\n  value:\n  - 0\n  - 150\n- name: in_nbytes_low\n  variable: in_bytes\n  matchtype: range\n  value:\n  - 151\n  - 1000\n- name: in_nbytes_medium\n  variable: in_bytes\n  matchtype: range\n  value:\n  - 1001\n  - 10000\n- name: in_nbytes_high\n  variable: in_bytes\n  matchtype: range\n  value:\n  - 10001\n  - 100000\n- name: in_nbytes_veryhigh\n  variable: in_bytes\n  matchtype: range\n  value:\n  - 100001\n  - Inf\n\n\n# Output Bytes\n- name: out_nbytes_verylow\n  variable: out_bytes\n  matchtype: range\n  value:\n  - 0\n  - 150\n- name: out_nbytes_low\n  variable: out_bytes\n  matchtype: range\n  value:\n  - 151\n  - 1000\n- name: out_nbytes_medium\n  variable: out_bytes\n  matchtype: range\n  value:\n  - 1001\n  - 10000\n- name: out_nbytes_high\n  variable: out_bytes\n  matchtype: range\n  value:\n  - 10001\n  - 100000\n- name: out_nbytes_veryhigh\n  variable: out_bytes\n  matchtype: range\n  value:\n  - 100001\n  - Inf\n\n\n# # Input Interface\n# - name: in_interface_1\n#   variable: in_interface\n#   matchtype: single\n#   value: 1\n# - name: in_interface_2\n#   variable: in_interface\n#   matchtype: single\n#   value: 2\n# - name: in_interface_3\n#   variable: in_interface\n#   matchtype: single\n#   value: 3\n# - name: in_interface_65535\n#   variable: in_interface\n#   matchtype: single\n#   value: 65535\n\n# # Input Interface\n# - name: out_interface_1\n#   variable: out_interface\n#   matchtype: single\n#   value: 1\n# - name: out_interface_2\n#   variable: out_interface\n#   matchtype: single\n#   value: 2\n# - name: out_interface_3\n#   variable: out_interface\n#   matchtype: single\n#   value: 3\n# - name: out_interface_65535\n#   variable: out_interface\n#   matchtype: single\n#   value: 65535\n",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/parser",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"parser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Launch parser (with file.yml)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"pm.collectionVariables.set(\"session_id\", jsonData.session_id);",
+							"postman.setEnvironmentVariable(\"session_id\", jsonData.session_id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "files[]",
+							"type": "file",
+							"src": "/home/less/FCParser/example/Examples_data/nf-with-headers.csv"
+						},
+						{
+							"key": "config",
+							"value": "tag: netflow\nstructured: True\ntimestamp_format: \"%Y-%m-%d %H:%M:%S\"\ntimearg: timestamp\n# Variables Section\n# =================\nVARIABLES:\n- name: timestamp\n  matchtype: time\n  where: 0\n- name: duration\n  matchtype: number\n  where: 2\n- name: src_ip\n  matchtype: ip\n  where: 3\n- name: dst_ip\n  matchtype: ip\n  where: 4\n- name: src_port\n  matchtype: number\n  where: 5\n- name: dst_port\n  matchtype: number\n  where: 6\n- name: protocol\n  matchtype: string\n  where: 7\n- name: tcp_flags\n  matchtype: string\n  where: 8\n- name: src_tos\n  matchtype: number\n  where: 10\n- name: in_packets\n  matchtype: number\n  where: 11\n- name: in_bytes\n  matchtype: number\n  where: 12\n- name: out_packets\n  matchtype: number\n  where: 13\n- name: out_bytes\n  matchtype: number\n  where: 14\n- name: in_interface\n  matchtype: number\n  where: 15\n- name: out_interface\n  matchtype: number\n  where: 16\n# FEATURES Section\n# =================\nFEATURES:\n# source IP\n- name: src_ip_private\n  variable: src_ip\n  matchtype: single\n  value: private\n- name: src_ip_public\n  variable: src_ip\n  matchtype: single\n  value: public\n- name: src_ip_default\n  variable: src_ip\n  matchtype: default\n  value: \n# destination IP\n- name: dst_ip_private\n  variable: dst_ip\n  matchtype: single\n  value: private\n- name: dst_ip_public\n  variable: dst_ip\n  matchtype: single\n  value: public\n- name: dst_ip_default\n  variable: dst_ip\n  matchtype: default\n  value: \n# source port\n- name: sport_zero\n  variable: src_port\n  matchtype: single\n  value: 0\n- name: sport_multiplex\n  variable: src_port\n  matchtype: single\n  value: 1\n- name: sport_echo\n  variable: src_port\n  matchtype: single\n  value: 7\n- name: sport_discard\n  variable: src_port\n  matchtype: single\n  value: 9\n- name: sport_daytime\n  variable: src_port\n  matchtype: single\n  value: 13\n- name: sport_quote\n  variable: src_port\n  matchtype: single\n  value: 17\n- name: sport_chwhereen\n  variable: src_port\n  matchtype: single\n  value: 19\n- name: sport_ftp_data\n  variable: src_port\n  matchtype: single\n  value: 20\n- name: sport_ftp_control\n  variable: src_port\n  matchtype: single\n  value: 21\n- name: sport_ssh\n  variable: src_port\n  matchtype: single\n  value: 22\n- name: sport_telnet\n  variable: src_port\n  matchtype: single\n  value: 23\n- name: sport_smtp\n  variable: src_port\n  matchtype: single\n  value: 25\n- name: sport_dns\n  variable: src_port\n  matchtype: single\n  value: 53\n- name: sport_bootp\n  variable: src_port\n  matchtype: multiple\n  value:\n  - 67\n  - 68\n- name: sport_gopher\n  variable: src_port\n  matchtype: single\n  value: 70\n- name: sport_finger\n  variable: src_port\n  matchtype: single\n  value: 79\n- name: sport_http\n  variable: src_port\n  matchtype: single\n  value: 80\n- name: sport_kerberos\n  variable: src_port\n  matchtype: single\n  value: 88\n- name: sport_pop3\n  variable: src_port\n  matchtype: single\n  value: 110\n- name: sport_nntp\n  variable: src_port\n  matchtype: single\n  value: 119\n- name: sport_ntp\n  variable: src_port\n  matchtype: single\n  value: 123\n- name: sport_netbios\n  variable: src_port\n  matchtype: multiple\n  value:\n  - 137\n  - 138\n  - 139\n- name: sport_imap4\n  variable: src_port\n  matchtype: single\n  value: 143\n- name: sport_snmp\n  variable: src_port\n  matchtype: single\n  value: 161\n- name: sport_ldap\n  variable: src_port\n  matchtype: single\n  value: 389\n- name: sport_https\n  variable: src_port\n  matchtype: single\n  value: 443\n- name: sport_mds\n  variable: src_port\n  matchtype: single\n  value: 445\n- name: sport_kpasswd\n  variable: src_port\n  matchtype: single\n  value: 464\n- name: sport_smtp_ssl\n  variable: src_port\n  matchtype: single\n  value: 465\n- name: sport_syslog\n  variable: src_port\n  matchtype: single\n  value: 514\n- name: sport_smtp\n  variable: src_port\n  matchtype: single\n  value: 587\n- name: sport_ldaps\n  variable: src_port\n  matchtype: single\n  value: 636\n- name: sport_cups\n  variable: src_port\n  matchtype: single\n  value: 631\n- name: sport_imap4\n  variable: src_port\n  matchtype: single\n  value: 993\n- name: sport_socks\n  variable: src_port\n  matchtype: single\n  value: 1080\n- name: sport_openvpn\n  variable: src_port\n  matchtype: single\n  value: 1194\n- name: sport_mssql\n  variable: src_port\n  matchtype: multiple\n  value:\n  - 1433\n  - 1434\n- name: sport_citrix\n  variable: src_port\n  matchtype: single\n  value: 1494\n- name: sport_oracle\n  variable: src_port\n  matchtype: single\n  value: 1521\n- name: sport_rapservice\n  variable: src_port\n  matchtype: single\n  value: 1530\n- name: sport_msnmessenger\n  variable: src_port\n  matchtype: single\n  value: 1863\n- name: sport_mgc\n  variable: src_port\n  matchtype: single\n  value: 3268\n- name: sport_mysql\n  variable: src_port\n  matchtype: single\n  value: 3306\n- name: sport_metasploit\n  variable: src_port\n  matchtype: single\n  value: 4444\n- name: sport_emule\n  variable: src_port\n  matchtype: single\n  value: 4662\n- name: sport_xmpp\n  variable: src_port\n  matchtype: single\n  value: 5222\n- name: sport_bittorrent\n  variable: src_port\n  matchtype: single\n  value: 6881\n- name: sport_http2\n  variable: src_port\n  matchtype: single\n  value: 8080\n- name: sport_reserved\n  variable: src_port\n  matchtype: range\n  value:\n  - 0\n  - 1023\n- name: sport_register\n  variable: src_port\n  matchtype: range\n  value:\n  - 1024\n  - 49151\n- name: sport_private\n  variable: src_port\n  matchtype: range\n  value:\n  - 49152\n  - 65535\n# destination port\n- name: dport_zero\n  variable: dst_port\n  matchtype: single\n  value: 0\n- name: dport_multiplex\n  variable: dst_port\n  matchtype: single\n  value: 1\n- name: dport_echo\n  variable: dst_port\n  matchtype: single\n  value: 7\n- name: dport_discard\n  variable: dst_port\n  matchtype: single\n  value: 9\n- name: dport_daytime\n  variable: dst_port\n  matchtype: single\n  value: 13\n- name: dport_quote\n  variable: dst_port\n  matchtype: single\n  value: 17\n- name: dport_chwhereen\n  variable: dst_port\n  matchtype: single\n  value: 19\n- name: dport_ftp_data\n  variable: dst_port\n  matchtype: single\n  value: 20\n- name: dport_ftp_control\n  variable: dst_port\n  matchtype: single\n  value: 21\n- name: dport_ssh\n  variable: dst_port\n  matchtype: single\n  value: 22\n- name: dport_telnet\n  variable: dst_port\n  matchtype: single\n  value: 23\n- name: dport_smtp\n  variable: dst_port\n  matchtype: single\n  value: 25\n- name: dport_dns\n  variable: dst_port\n  matchtype: single\n  value: 53\n- name: dport_bootp\n  variable: dst_port\n  matchtype: multiple\n  value:\n  - 67\n  - 68\n- name: dport_gopher\n  variable: dst_port\n  matchtype: single\n  value: 70\n- name: dport_finger\n  variable: dst_port\n  matchtype: single\n  value: 79\n- name: dport_http\n  variable: dst_port\n  matchtype: single\n  value: 80\n- name: dport_kerberos\n  variable: dst_port\n  matchtype: single\n  value: 88\n- name: dport_pop3\n  variable: dst_port\n  matchtype: single\n  value: 110\n- name: dport_nntp\n  variable: dst_port\n  matchtype: single\n  value: 119\n- name: dport_ntp\n  variable: dst_port\n  matchtype: single\n  value: 123\n- name: dport_netbios\n  variable: dst_port\n  matchtype: multiple\n  value:\n  - 137\n  - 138\n  - 139\n- name: dport_imap4\n  variable: dst_port\n  matchtype: single\n  value: 143\n- name: dport_snmp\n  variable: dst_port\n  matchtype: single\n  value: 161\n- name: dport_ldap\n  variable: dst_port\n  matchtype: single\n  value: 389\n- name: dport_https\n  variable: dst_port\n  matchtype: single\n  value: 443\n- name: dport_mds\n  variable: dst_port\n  matchtype: single\n  value: 445\n- name: dport_kpasswd\n  variable: dst_port\n  matchtype: single\n  value: 464\n- name: dport_smtp_ssl\n  variable: dst_port\n  matchtype: single\n  value: 465\n- name: dport_syslog\n  variable: dst_port\n  matchtype: single\n  value: 514\n- name: dport_smtp\n  variable: dst_port\n  matchtype: single\n  value: 587\n- name: dport_ldaps\n  variable: dst_port\n  matchtype: single\n  value: 636\n- name: dport_cups\n  variable: dst_port\n  matchtype: single\n  value: 631\n- name: dport_imap4\n  variable: dst_port\n  matchtype: single\n  value: 993\n- name: dport_socks\n  variable: dst_port\n  matchtype: single\n  value: 1080\n- name: dport_openvpn\n  variable: dst_port\n  matchtype: single\n  value: 1194\n- name: dport_mssql\n  variable: dst_port\n  matchtype: multiple\n  value:\n  - 1433\n  - 1434\n- name: dport_citrix\n  variable: dst_port\n  matchtype: single\n  value: 1494\n- name: dport_oracle\n  variable: dst_port\n  matchtype: single\n  value: 1521\n- name: dport_rapservice\n  variable: dst_port\n  matchtype: single\n  value: 1530\n- name: dport_msnmessenger\n  variable: dst_port\n  matchtype: single\n  value: 1863\n- name: dport_mgc\n  variable: dst_port\n  matchtype: single\n  value: 3268\n- name: dport_mysql\n  variable: dst_port\n  matchtype: single\n  value: 3306\n- name: dport_metasploit\n  variable: dst_port\n  matchtype: single\n  value: 4444\n- name: dport_emule\n  variable: dst_port\n  matchtype: single\n  value: 4662\n- name: dport_xmpp\n  variable: dst_port\n  matchtype: single\n  value: 5222\n- name: dport_bittorrent\n  variable: dst_port\n  matchtype: single\n  value: 6881\n- name: dport_http2\n  variable: dst_port\n  matchtype: single\n  value: 8080\n- name: dport_reserved\n  variable: dst_port\n  matchtype: range\n  value:\n  - 0\n  - 1023\n- name: dport_register\n  variable: dst_port\n  matchtype: range\n  value:\n  - 1024\n  - 49151\n- name: dport_private\n  variable: dst_port\n  matchtype: range\n  value:\n  - 49152\n  - 65535\n# protocol\n- name: protocol_tcp\n  variable: protocol\n  matchtype: single\n  value: TCP\n- name: protocol_udp\n  variable: protocol\n  matchtype: single\n  value: UDP\n- name: protocol_icmp\n  variable: protocol\n  matchtype: single\n  value: ICMP\n- name: protocol_igmp\n  variable: protocol\n  matchtype: single\n  value: IGMP\n- name: protocol_other\n  variable: protocol\n  matchtype: default\n  value: \n# TCP flags\n- name: tcpflags_URG\n  variable: tcp_flags\n  matchtype: regexp\n  value: 'U'\n- name: tcpflags_ACK\n  variable: tcp_flags\n  matchtype: regexp\n  value: 'A'\n- name: tcpflags_PSH\n  variable: tcp_flags\n  matchtype: regexp\n  value: 'P'\n- name: tcpflags_RST\n  variable: tcp_flags\n  matchtype: regexp\n  value: 'R'\n- name: tcpflags_SYN\n  variable: tcp_flags\n  matchtype: regexp\n  value: 'S'\n- name: tcpflags_FIN\n  variable: tcp_flags\n  matchtype: regexp\n  value: 'F'\n# source Type of Service\n- name: srctos_zero\n  variable: src_tos\n  matchtype: single\n  value: 0\n- name: srctos_192\n  variable: src_tos\n  matchtype: single\n  value: 192\n- name: srctos_other\n  variable: src_tos\n  matchtype: default\n  value: \n# Input packets\n- name: in_npackets_verylow\n  variable: in_packets\n  matchtype: range\n  value:\n  - 0\n  - 3\n- name: in_npackets_low\n  variable: in_packets\n  matchtype: range\n  value:\n  - 4\n  - 20\n- name: in_npackets_medium\n  variable: in_packets\n  matchtype: range\n  value:\n  - 21\n  - 100\n- name: in_npackets_high\n  variable: in_packets\n  matchtype: range\n  value:\n  - 101\n  - 1000\n- name: in_npackets_veryhigh\n  variable: in_packets\n  matchtype: range\n  value:\n  - 1001\n  - Inf\n# Output packets\n- name: out_npackets_verylow\n  variable: out_packets\n  matchtype: range\n  value:\n  - 0\n  - 3\n- name: out_npackets_low\n  variable: out_packets\n  matchtype: range\n  value:\n  - 4\n  - 20\n- name: out_npackets_medium\n  variable: out_packets\n  matchtype: range\n  value:\n  - 21\n  - 100\n- name: out_npackets_high\n  variable: out_packets\n  matchtype: range\n  value:\n  - 101\n  - 1000\n- name: out_npackets_veryhigh\n  variable: out_packets\n  matchtype: range\n  value:\n  - 1001\n  - Inf\n# Input Bytes\n- name: in_nbytes_verylow\n  variable: in_bytes\n  matchtype: range\n  value:\n  - 0\n  - 150\n- name: in_nbytes_low\n  variable: in_bytes\n  matchtype: range\n  value:\n  - 151\n  - 1000\n- name: in_nbytes_medium\n  variable: in_bytes\n  matchtype: range\n  value:\n  - 1001\n  - 10000\n- name: in_nbytes_high\n  variable: in_bytes\n  matchtype: range\n  value:\n  - 10001\n  - 100000\n- name: in_nbytes_veryhigh\n  variable: in_bytes\n  matchtype: range\n  value:\n  - 100001\n  - Inf\n# Output Bytes\n- name: out_nbytes_verylow\n  variable: out_bytes\n  matchtype: range\n  value:\n  - 0\n  - 150\n- name: out_nbytes_low\n  variable: out_bytes\n  matchtype: range\n  value:\n  - 151\n  - 1000\n- name: out_nbytes_medium\n  variable: out_bytes\n  matchtype: range\n  value:\n  - 1001\n  - 10000\n- name: out_nbytes_high\n  variable: out_bytes\n  matchtype: range\n  value:\n  - 10001\n  - 100000\n- name: out_nbytes_veryhigh\n  variable: out_bytes\n  matchtype: range\n  value:\n  - 100001\n  - Inf\n# # Input Interface\n# - name: in_interface_1\n#   variable: in_interface\n#   matchtype: single\n#   value: 1\n# - name: in_interface_2\n#   variable: in_interface\n#   matchtype: single\n#   value: 2\n# - name: in_interface_3\n#   variable: in_interface\n#   matchtype: single\n#   value: 3\n# - name: in_interface_65535\n#   variable: in_interface\n#   matchtype: single\n#   value: 65535\n# # Input Interface\n# - name: out_interface_1\n#   variable: out_interface\n#   matchtype: single\n#   value: 1\n# - name: out_interface_2\n#   variable: out_interface\n#   matchtype: single\n#   value: 2\n# - name: out_interface_3\n#   variable: out_interface\n#   matchtype: single\n#   value: 3\n# - name: out_interface_65535\n#   variable: out_interface\n#   matchtype: single\n#   value: 65535\n",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/parser",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"parser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get parser status",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/status/{{session_id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"status",
+						"{{session_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get parser results",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/results/{{session_id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"results",
+						"{{session_id}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "session_id",
+			"value": ""
+		}
+	]
+}
